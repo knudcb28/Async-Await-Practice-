@@ -57,3 +57,13 @@ const getData = async function() {
         console.log('ooops', err)
     }
 }
+
+//using for await of 
+
+const getData2 = async function() {
+    const arrayOfPromises = urls.map(url => fetch(url));
+    for await (let request of arrayOfPromises) {
+        const data = await request.json()
+        console.log(data);
+    }
+}
